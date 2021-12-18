@@ -1,5 +1,9 @@
 import qrcode
 
 #standard qrcode
-img= qrcode.make("https://facebook.com/")
-img.save("xx.png")
+##Function: 
+def easyWay(link):
+    img= qrcode.make(link)
+    img.save("xx.png")
+
+easyWay("facebook.com")
