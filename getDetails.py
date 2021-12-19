@@ -1,6 +1,7 @@
 import Verification
 from details import Details
-def QrCode(data_link):
+
+def Get_Details(data_link):
     colors= ["#000000","#ffffff"]
     logo=""
     if(Verification.isFacebook(data_link)):
@@ -17,5 +18,3 @@ def QrCode(data_link):
         logo =Details.twitter.value['logo']
     
     return colors,logo
-
-print(QrCode("github.com"))
