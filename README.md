@@ -1,3 +1,3 @@
-# QR_CODE_Genrator
+# QR_CODE_Generator
 
 
