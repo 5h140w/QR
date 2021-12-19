@@ -1,4 +1,6 @@
 import qrcode
+import PIL
+from qrcode import constants
 
 #qrcodev1 (only link)
 ##Function: 
@@ -19,6 +21,15 @@ def v2(link,colors):
     qr.add_data(link)
     qr.make(fit=True)
     img = qr.make_image(fill=colors[0],back_color=colors[1])
+    print(type(img))
     img.save("xx1.png")
 
 v2("wwww",["black","white"])
+
+
+##qrcode3(link+color+logo)
+def v3(link,color,logo):
+    qr= qrcode.QRCode(version=2,error_correction=constants.ERROR_CORRECT_M,box_size=12,border=5)
+    qr.add_data(link)
+    qr.make(fit=True)
+    img = qr.make_image()
