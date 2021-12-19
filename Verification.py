@@ -18,5 +18,3 @@ def isGithub(string):
         return True
     else:
         return False
-
-
