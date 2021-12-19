@@ -1,5 +1,5 @@
 import qrcode
-from getDetails import Get_Details
+from functions.getDetails import Get_Details
 from PIL import Image
 from time import time
 
@@ -17,6 +17,3 @@ def GenQRCode(link):
     filename= str(time()).split(".")[0]
     savedFolder= location+"/"+filename+".png"
     img.save(savedFolder)
-
-
-GenQRCode("facebook.com")

@@ -1,5 +1,5 @@
-import Verification
-from details import Details
+import functions.Verification as Verification
+from functions.details import Details
 
 def Get_Details(data_link):
     colors= Details.others.value['colors']
