@@ -1,21 +1,16 @@
-import Verification
-from details import Details
-def QrCode(data_link):
-    colors= ["#000000","#ffffff"]
-    logo=""
-    if(Verification.isFacebook(data_link)):
-        colors= Details.facebook.value['colors']
-        logo =Details.facebook.value['logo']
-    elif(Verification.isGithub(data_link)):
-        colors= Details.github.value['colors']
-        logo =Details.github.value['logo']
-    elif(Verification.isInstagram(data_link)):
-        colors= Details.instagram.value['colors']
-        logo =Details.instagram.value['logo']
-    elif(Verification.isTwitter(data_link)):
-        colors= Details.twitter.value['colors']
-        logo =Details.twitter.value['logo']
-    
-    return colors,logo
+import qrcode
+from getDetails import Get_Details
+from PIL import Image
 
-print(QrCode("github.com"))
+def GenQRCode(link):
+    qr= qrcode.QRCode(version=10, error_correction=qrcode.constants.ERROR_CORRECT_M,box_size=10,border=4)
+    qr.make(fit=True)
+    colors, logo = Get_Details(link)
+    img = qr.make_image(fill_color=colors[0], back_color=colors[1]).convert('RGBA')
+    logo_display = Image.open(logo)
+    logo_display.thumbnail((120,120))
+    logo_pos = ((img.size[0] - logo_display.size[0]) // 2, (img.size[1] - logo_display.size[1]) // 2)
+    img.paste(logo_display,logo_pos)   
+    return img
+
+
